@@ -1,8 +1,7 @@
 #include "sort.h"
 
 /**
- * bubble_sort - Sorts an array of integers in ascending order using
- *               the Bubble sort algorithm.
+ * bubble_sort - Sorts an array of integers in ascending order using Bubble Sort
  *
  * @array: The array to be sorted
  * @size: Number of elements in @array
@@ -13,13 +12,13 @@ void bubble_sort(int *array, size_t size)
     int temp;
     int swapped;
 
-    if (array == NULL || size < 2)
+    if (size < 2)
         return;
 
     for (i = 0; i < size - 1; i++)
     {
         swapped = 0;
-        for (j = 0; j < size - i - 1; j++)
+        for (j = 0; j < size - 1 - i; j++)
         {
             if (array[j] > array[j + 1])
             {
@@ -28,16 +27,14 @@ void bubble_sort(int *array, size_t size)
                 array[j] = array[j + 1];
                 array[j + 1] = temp;
 
-                /* Set swapped flag to true */
-                swapped = 1;
-
-                /* Print array after each swap */
+                /* Print the array after each swap */
                 print_array(array, size);
+                swapped = 1;
             }
         }
 
-        /* If no two elements were swapped by inner loop, array is already sorted */
-        if (swapped == 0)
+        /* If no swaps occurred, the array is already sorted */
+        if (!swapped)
             break;
     }
 }
