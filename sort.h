@@ -39,4 +39,13 @@ void bubble_sort(int *array, size_t size);
  * @list: Pointer to the head of the doubly linked list
  */
 void insertion_sort_list(listint_t **list);
+
+/**
+ * selection_sort - Sorts an array of integers in ascending order using
+ * the Selection sort algorithm.
+ *
+ * @array: The array to be sorted
+ * @size: Number of elements in the array
+ */
+void selection_sort(int *array, size_t size);
 #endif /* SORT_H */
