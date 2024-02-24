@@ -7,37 +7,42 @@
  */
 void insertion_sort_list(listint_t **list)
 {
-	if (list == NULL || *list == NULL || (*list)->next == NULL)
-		return;
+	listint_t *current, *next, *prev;
 
-	listint_t *current, *next_node;
+	if (*list == NULL || (*list)->next == NULL)
+	{
+		return;  /*List is empty or has only one element*/
+	}
 
+	/*Start with the second node*/
 	current = (*list)->next;
 
-	while (current != NULL)
+	while (current)
 	{
-		next_node = current->next;
+		next = current->next;
+		prev = NULL;
 
-		while (current->prev != NULL && current->n < current->prev->n)
+		/*Find the insertion position for the current node*/
+		while (current->prev && current->n < current->prev->n)
 		{
-			current->prev->next = current->next;
-			if (current->next != NULL)
-				current->next->prev = current->prev;
+			prev = current->prev;
+			current->prev = prev->next;
+			if (prev->next) {
+				prev->next->prev = current;
+			}
+			current->next = prev;
+			prev->next = current;
 
-			current->next = current->prev;
-			current->prev = current->prev->prev;
-
-			if (current->prev != NULL)
-				current->prev->next = current;
-			else
-				*list = current;
-
-			if (current->next != NULL)
-				current->next->prev = current;
-
+			/*Print the list after each swap*/
 			print_list(*list);
 		}
 
-		current = next_node;
+		/*If the current node was at the beginning, update the head*/
+		if (prev == NULL)
+		{
+			*list = current;
+		}
+
+		current = next;
 	}
 }

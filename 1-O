@@ -1,3 +1,2 @@
-O(n)      # Best case
-O(n^2)    # Average case
-O(n^2)    # Worst case
+O(n)  // Best case (already sorted)
+O(n^2) // Average and worst cases (quadratic comparisons)
