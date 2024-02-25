@@ -1,0 +1,3 @@
+Best case: O(nk)
+Average case: O(nk)
+Worst case: O(nk)
