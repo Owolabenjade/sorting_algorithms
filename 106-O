@@ -1,0 +1,3 @@
+Best case: O(log²n)
+Average case: O(log²n)
+Worst case: O(log²n)
